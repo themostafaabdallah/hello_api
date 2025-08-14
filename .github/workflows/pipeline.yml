@@ -26,11 +26,30 @@ jobs:
         run: |
           mkdir artifacts
           cp api-linux artifacts/.
-          cp api-macos artifacts/.
+          cp api-macos-intel artifacts/.
+          cp api-macos-apple-silicon artifacts/.
           cp api.exe artifacts/.
 
-      - name: Archive
+      - name: Upload Linux Binary
         uses: actions/upload-artifact@v4
         with:
-          name: api-binaries
-          path: artifacts/
+          name: api-linux
+          path: artifacts/api-linux
+
+      - name: Upload Mac Intel Binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: api-macos-intel
+          path: artifacts/api-macos-intel
+
+      - name: Upload Mac Apple Silicon Binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: api-macos-apple-silicon
+          path: artifacts/api-macos-apple-silicon
+
+      - name: Upload Windows Binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: api-windows.exe
+          path: artifacts/api.exe

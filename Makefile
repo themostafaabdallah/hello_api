@@ -2,17 +2,20 @@ GO_VERSION := 1.25.0
 OS := $(shell uname -s)
 
 .PHONY: install-go init-go setup
-.PHONY: build-linux build-macos build-windows build
+.PHONY: build-linux build-macos-intel build-macos-apple-silicon build-windows build
 
 setup: install-go init-go
 
-build: build-linux build-macos build-windows
+build: build-linux build-macos-intel build-macos-apple-silicon build-windows
 
 build-linux:
 	GOOS=linux GOARCH=amd64 go build -o api-linux cmd/main.go
 
-build-macos:
-	GOOS=darwin GOARCH=amd64 go build -o api-macos cmd/main.go
+build-macos-intel:
+	GOOS=darwin GOARCH=amd64 go build -o api-macos-intel cmd/main.go
+
+build-macos-apple-silicon:
+	GOOS=darwin GOARCH=arm64 go build -o api-macos-apple-silicon cmd/main.go
 
 build-windows:
 	GOOS=windows GOARCH=amd64 go build -o api.exe cmd/main.go
