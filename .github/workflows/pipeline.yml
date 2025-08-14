@@ -25,10 +25,12 @@ jobs:
       - name: Copy Files
         run: |
           mkdir artifacts
-          cp api artifacts/.
+          cp api-linux artifacts/.
+          cp api-macos artifacts/.
+          cp api.exe artifacts/.
 
       - name: Archive
         uses: actions/upload-artifact@v4
         with:
-          name: api
-          path: artifacts
+          name: api-binaries
+          path: artifacts/

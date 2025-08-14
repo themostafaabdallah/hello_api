@@ -2,11 +2,20 @@ GO_VERSION := 1.25.0
 OS := $(shell uname -s)
 
 .PHONY: install-go init-go setup
+.PHONY: build-linux build-macos build-windows build
 
 setup: install-go init-go
 
-build:
-	go build -o api cmd/main.go
+build: build-linux build-macos build-windows
+
+build-linux:
+	GOOS=linux GOARCH=amd64 go build -o api-linux cmd/main.go
+
+build-macos:
+	GOOS=darwin GOARCH=amd64 go build -o api-macos cmd/main.go
+
+build-windows:
+	GOOS=windows GOARCH=amd64 go build -o api.exe cmd/main.go
 
 install-go:
 ifeq ($(OS),Linux)
