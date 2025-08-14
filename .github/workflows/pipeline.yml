@@ -25,31 +25,31 @@ jobs:
       - name: Copy Files
         run: |
           mkdir artifacts
-          cp api-linux artifacts/.
-          cp api-macos-intel artifacts/.
-          cp api-macos-apple-silicon artifacts/.
-          cp api.exe artifacts/.
+          cp hello-api-linux artifacts/.
+          cp hello-api-macos-intel artifacts/.
+          cp hello-api-macos-apple-silicon artifacts/.
+          cp hello-api-windows.exe artifacts/.
 
       - name: Upload Linux Binary
         uses: actions/upload-artifact@v4
         with:
-          name: api-linux
-          path: artifacts/api-linux
+          name: hello-api-linux
+          path: artifacts/hello-api-linux
 
       - name: Upload Mac Intel Binary
         uses: actions/upload-artifact@v4
         with:
-          name: api-macos-intel
-          path: artifacts/api-macos-intel
+          name: hello-api-macos-intel
+          path: artifacts/hello-api-macos-intel
 
       - name: Upload Mac Apple Silicon Binary
         uses: actions/upload-artifact@v4
         with:
-          name: api-macos-apple-silicon
-          path: artifacts/api-macos-apple-silicon
+          name: hello-api-macos-apple-silicon
+          path: artifacts/hello-api-macos-apple-silicon
 
       - name: Upload Windows Binary
         uses: actions/upload-artifact@v4
         with:
-          name: api-windows.exe
-          path: artifacts/api.exe
+          name: hello-api-windows.exe
+          path: artifacts/hello-api-windows.exe

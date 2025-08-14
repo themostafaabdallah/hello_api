@@ -9,16 +9,16 @@ setup: install-go init-go
 build: build-linux build-macos-intel build-macos-apple-silicon build-windows
 
 build-linux:
-	GOOS=linux GOARCH=amd64 go build -o api-linux cmd/main.go
+	GOOS=linux GOARCH=amd64 go build -o hello-api-linux cmd/main.go
 
 build-macos-intel:
-	GOOS=darwin GOARCH=amd64 go build -o api-macos-intel cmd/main.go
+	GOOS=darwin GOARCH=amd64 go build -o hello-api-macos-intel cmd/main.go
 
 build-macos-apple-silicon:
-	GOOS=darwin GOARCH=arm64 go build -o api-macos-apple-silicon cmd/main.go
+	GOOS=darwin GOARCH=arm64 go build -o hello-api-macos-apple-silicon cmd/main.go
 
 build-windows:
-	GOOS=windows GOARCH=amd64 go build -o api.exe cmd/main.go
+	GOOS=windows GOARCH=amd64 go build -o hello-api-windows.exe cmd/main.go
 
 install-go:
 ifeq ($(OS),Linux)
